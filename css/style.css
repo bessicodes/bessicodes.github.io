@@ -798,6 +798,126 @@ button, input, textarea, select { font: inherit; color: inherit; }
   transition: filter 0.6s var(--ease), transform 0.8s var(--ease);
 }
 .about__media-frame:hover img { filter: grayscale(0) contrast(1.05); transform: scale(1.03); }
+
+/* Monogram composition (replaces the second portrait) */
+.about__monogram {
+  display: grid;
+  grid-template-rows: auto 1fr auto auto auto;
+  padding: 34px 34px 38px;
+  background:
+    radial-gradient(140% 90% at 50% 0%, rgba(212,175,55,0.07), transparent 60%),
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+}
+.about__monogram::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(212,175,55,0.10);
+  border-radius: calc(var(--radius-lg) - 12px);
+  pointer-events: none;
+}
+.about__monogram-vert {
+  position: absolute;
+  left: 26px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left center;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.about__monogram-coords {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.about__monogram-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(212,175,55,0.6);
+}
+.about__monogram-mark {
+  align-self: center;
+  justify-self: center;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.04em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(7rem, 18vw, 11rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, var(--gold-2) 0%, var(--gold) 45%, var(--gold-3) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 18px 40px rgba(212,175,55,0.18));
+}
+.about__monogram-mark-b {
+  font-style: italic;
+  margin-left: -0.08em;
+}
+.about__monogram-tagline {
+  justify-self: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 14px;
+}
+.about__monogram-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.about__monogram-role {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.about__monogram-rule {
+  justify-self: center;
+  width: 56px;
+  height: 1px;
+  margin: 22px 0 14px;
+  background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+}
+.about__monogram-sig {
+  justify-self: center;
+  width: 160px;
+  height: 36px;
+  color: var(--gold-2);
+  opacity: 0.85;
+}
+.about__monogram-sig path {
+  stroke-dasharray: 380;
+  stroke-dashoffset: 380;
+  animation: monogram-sig 2.2s var(--ease) 0.6s forwards;
+}
+@keyframes monogram-sig {
+  to { stroke-dashoffset: 0; }
+}
+.reveal.is-in .about__monogram-sig path,
+.reveal-line.is-in .about__monogram-sig path {
+  animation: monogram-sig 2.2s var(--ease) 0.6s forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about__monogram-sig path { animation: none; stroke-dashoffset: 0; }
+}
 .about__media-stripe {
   position: absolute; left: 0; right: 0; bottom: 0;
   height: 4px;
