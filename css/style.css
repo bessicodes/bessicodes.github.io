@@ -1701,61 +1701,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .timeline__title { font-size: 20px; }
 }
 
-/* ─── Achievements ───────────────────────────────────── */
-.awards {
-  display: grid; gap: 0;
-  border-top: 1px solid var(--border);
-}
-.award {
-  display: grid;
-  grid-template-columns: 60px 1fr 80px;
-  gap: 28px;
-  align-items: center;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--border);
-  transition: padding 0.3s var(--ease), background 0.3s var(--ease);
-  position: relative;
-}
-.award::before {
-  content: ''; position: absolute; left: 0; right: 0; top: 0; bottom: 0;
-  background: linear-gradient(90deg, var(--gold-soft), transparent 50%);
-  opacity: 0; transition: opacity 0.4s var(--ease);
-  pointer-events: none;
-}
-.award:hover { padding-left: 18px; padding-right: 18px; }
-.award:hover::before { opacity: 1; }
-
-.award__num {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.2em;
-  color: var(--gold);
-  position: relative;
-}
-.award__body { position: relative; }
-.award__body h3 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  font-size: clamp(22px, 2.4vw, 32px);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
-  color: var(--text);
-}
-.award__body p { color: var(--muted); font-size: 14px; max-width: 640px; }
-.award__year {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  letter-spacing: 0.15em;
-  color: var(--text-soft);
-  text-align: right;
-  position: relative;
-}
-
-@media (max-width: 720px) {
-  .award { grid-template-columns: 40px 1fr; gap: 16px; }
-  .award__year { grid-column: 2 / -1; text-align: left; color: var(--gold); font-size: 11px; }
-}
 
 /* ─── Contact ────────────────────────────────────────── */
 .contact { padding: 140px 0 160px; }
