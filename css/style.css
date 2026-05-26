@@ -2267,3 +2267,96 @@ body.has-custom-cursor [data-tilt] { cursor: none; }
   .cursor__ring { transition: none; }
 }
 
+/* ─── Per-letter heading reveals ─────────────────────── */
+.section__title,
+.contact__title {
+  transform: skewY(var(--scroll-skew, 0deg));
+  transition: transform 0.45s var(--ease);
+}
+.section__title .char,
+.contact__title .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.4em);
+  transition: transform 0.85s var(--ease),
+              opacity 0.85s var(--ease);
+  transition-delay: calc(var(--ch-i, 0) * 22ms);
+  will-change: transform, opacity;
+}
+.reveal.is-in .section__title .char,
+.reveal.is-in .contact__title .char,
+.section__title.is-split-in .char,
+.contact__title.is-split-in .char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Marquee ────────────────────────────────────────── */
+.marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 38px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background:
+    radial-gradient(120% 80% at 50% 50%, var(--gold-soft), transparent 70%),
+    var(--bg);
+  z-index: 1;
+}
+.marquee::before,
+.marquee::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 140px;
+  pointer-events: none;
+  z-index: 2;
+}
+.marquee::before { left: 0;  background: linear-gradient(90deg, var(--bg), transparent); }
+.marquee::after  { right: 0; background: linear-gradient(-90deg, var(--bg), transparent); }
+
+.marquee__track {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+.marquee__item {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 5.5vw, 3.6rem);
+  letter-spacing: -0.01em;
+  color: var(--text);
+  white-space: nowrap;
+  line-height: 1;
+}
+.marquee__item--italic {
+  font-style: italic;
+  background: linear-gradient(180deg, var(--gold-2) 0%, var(--gold) 60%, var(--gold-3));
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.marquee__dot {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 14px rgba(212,175,55,0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section__title,
+  .contact__title { transform: none; }
+  .section__title .char,
+  .contact__title .char {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee__track { transform: none !important; }
+}
+

@@ -248,6 +248,44 @@
     scrollToTarget(target);
   });
 
+  // Split section titles and contact title into per-character spans
+  // so each letter can animate in with a stagger and inherit the parent's
+  // scroll-velocity skew.
+  const splitChars = (root) => {
+    if (!root || root.dataset.split === 'true') return;
+    root.dataset.split = 'true';
+    let index = 0;
+    const walk = (node) => {
+      const kids = Array.from(node.childNodes);
+      kids.forEach((child) => {
+        if (child.nodeType === Node.TEXT_NODE) {
+          const text = child.textContent;
+          const frag = document.createDocumentFragment();
+          for (let i = 0; i < text.length; i++) {
+            const ch = text[i];
+            if (ch === ' ' || ch === ' ') {
+              frag.appendChild(document.createTextNode(ch));
+            } else {
+              const span = document.createElement('span');
+              span.className = 'char';
+              span.style.setProperty('--ch-i', index++);
+              span.textContent = ch;
+              frag.appendChild(span);
+            }
+          }
+          child.parentNode.replaceChild(frag, child);
+        } else if (child.nodeType === Node.ELEMENT_NODE) {
+          walk(child);
+        }
+      });
+    };
+    walk(root);
+  };
+
+  if (!prefersReducedMotion) {
+    $$('.section__title, .contact__title').forEach(splitChars);
+  }
+
   if (!prefersReducedMotion) {
     (async () => {
       try {
@@ -259,11 +297,42 @@
           smoothWheel: true,
           touchMultiplier: 1.2,
         });
-        const raf = (time) => {
-          lenisInstance.raf(time);
-          requestAnimationFrame(raf);
+
+        // Single rAF loop drives Lenis + velocity-based skew + marquee.
+        const marqueeTrack = $('#marqueeTrack');
+        let marqueeBase = 0;
+        let marqueeHalfWidth = 0;
+        const MARQUEE_SPEED = 28; // px/s baseline
+        let lastFrame = performance.now();
+
+        const measureMarquee = () => {
+          if (marqueeTrack) marqueeHalfWidth = marqueeTrack.scrollWidth / 2;
         };
-        requestAnimationFrame(raf);
+        measureMarquee();
+        window.addEventListener('resize', measureMarquee, { passive: true });
+
+        const tick = (time) => {
+          lenisInstance.raf(time);
+          const dt = Math.min(0.05, (time - lastFrame) / 1000);
+          lastFrame = time;
+          const v = lenisInstance.velocity || 0;
+
+          // Velocity skew: clamp to keep it subtle
+          const sk = Math.max(-1.2, Math.min(1.2, v * 0.018));
+          document.documentElement.style.setProperty('--scroll-skew', `${sk.toFixed(3)}deg`);
+
+          // Marquee: constant drift plus a velocity contribution
+          if (marqueeTrack && marqueeHalfWidth > 0) {
+            const velBoost = Math.abs(v) * 0.55;
+            marqueeBase -= (MARQUEE_SPEED + velBoost) * dt;
+            // Wrap when we have scrolled past one full duplicate set
+            while (marqueeBase <= -marqueeHalfWidth) marqueeBase += marqueeHalfWidth;
+            marqueeTrack.style.transform = `translate3d(${marqueeBase.toFixed(2)}px, 0, 0)`;
+          }
+
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
       } catch (err) {
         console.warn('Lenis failed to load', err);
       }
