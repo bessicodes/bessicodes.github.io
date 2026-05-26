@@ -226,6 +226,17 @@
     });
   }
 
+  let lenisInstance = null;
+
+  const scrollToTarget = (target) => {
+    const y = target.getBoundingClientRect().top + window.scrollY - 24;
+    if (lenisInstance && !prefersReducedMotion) {
+      lenisInstance.scrollTo(y, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: y, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    }
+  };
+
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
@@ -234,9 +245,79 @@
     const target = $(href);
     if (!target) return;
     e.preventDefault();
-    const y = target.getBoundingClientRect().top + window.scrollY - 24;
-    window.scrollTo({ top: y, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    scrollToTarget(target);
   });
+
+  if (!prefersReducedMotion) {
+    (async () => {
+      try {
+        const mod = await import('https://cdn.jsdelivr.net/npm/lenis@1.1.20/+esm');
+        const Lenis = mod.default || mod.Lenis || mod;
+        lenisInstance = new Lenis({
+          duration: 1.1,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+          touchMultiplier: 1.2,
+        });
+        const raf = (time) => {
+          lenisInstance.raf(time);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+      } catch (err) {
+        console.warn('Lenis failed to load', err);
+      }
+    })();
+  }
+
+  if (!isTouch && !prefersReducedMotion) {
+    const cursor = $('#cursor');
+    if (cursor) {
+      document.body.classList.add('has-custom-cursor');
+      const dot = $('.cursor__dot', cursor);
+      const ring = $('.cursor__ring', cursor);
+      let tx = window.innerWidth / 2;
+      let ty = window.innerHeight / 2;
+      let rx = tx;
+      let ry = ty;
+      let visible = false;
+
+      const hoverSelector = 'a, button, [role="button"], .magnetic, [data-tilt], input, textarea, label, .chip, .nav__burger, .skill-card, .snapshot__card, .award, .timeline__card';
+      let isHover = false;
+
+      window.addEventListener('mousemove', (e) => {
+        tx = e.clientX;
+        ty = e.clientY;
+        if (!visible) {
+          visible = true;
+          cursor.classList.add('is-active');
+        }
+        const el = document.elementFromPoint(tx, ty);
+        const overHover = !!(el && el.closest && el.closest(hoverSelector));
+        if (overHover !== isHover) {
+          isHover = overHover;
+          cursor.classList.toggle('is-hover', isHover);
+        }
+      }, { passive: true });
+
+      document.addEventListener('mouseleave', () => {
+        visible = false;
+        cursor.classList.remove('is-active');
+      });
+
+      window.addEventListener('mousedown', () => cursor.classList.add('is-down'));
+      window.addEventListener('mouseup', () => cursor.classList.remove('is-down'));
+
+      const cursorTick = () => {
+        rx += (tx - rx) * 0.18;
+        ry += (ty - ry) * 0.18;
+        if (dot) dot.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+        if (ring) ring.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
+        requestAnimationFrame(cursorTick);
+      };
+      requestAnimationFrame(cursorTick);
+    }
+  }
 
   setTimeout(kickReveals, 100);
 

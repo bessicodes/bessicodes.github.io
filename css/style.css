@@ -42,7 +42,7 @@
   --maxw:        1280px;
 }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { -webkit-font-smoothing: antialiased; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
@@ -2128,3 +2128,77 @@ a.contact__card-value:hover { color: var(--gold); }
   .reveal { opacity: 1; transform: none; }
   .reveal-line > span { transform: none; }
 }
+
+/* ─── Lenis smooth scroll ────────────────────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ─── Custom cursor ──────────────────────────────────── */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0; height: 0;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.cursor.is-active { opacity: 1; }
+
+.cursor__dot,
+.cursor__ring {
+  position: absolute;
+  top: 0; left: 0;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+.cursor__dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--gold-2);
+  box-shadow: 0 0 14px rgba(245, 215, 126, 0.55);
+}
+
+.cursor__ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1.5px solid rgba(245, 215, 126, 0.85);
+  transition: width 0.25s var(--ease), height 0.25s var(--ease),
+              margin 0.25s var(--ease),
+              border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.cursor.is-hover .cursor__ring {
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  background: rgba(245, 215, 126, 0.10);
+  border-color: rgba(245, 215, 126, 0.6);
+}
+
+.cursor.is-down .cursor__ring {
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor a,
+body.has-custom-cursor button,
+body.has-custom-cursor [role="button"],
+body.has-custom-cursor .magnetic,
+body.has-custom-cursor [data-tilt] { cursor: none; }
+
+@media (hover: none), (pointer: coarse) {
+  .cursor { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor__ring { transition: none; }
+}
+
