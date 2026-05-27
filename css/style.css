@@ -45,7 +45,7 @@
 html { -webkit-font-smoothing: antialiased; }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Geist', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -211,7 +211,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .preloader.is-done { opacity: 0; visibility: hidden; }
 .preloader__inner { text-align: center; width: min(320px, 80vw); }
 .preloader__logo {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 700;
   font-size: clamp(56px, 9vw, 96px);
   letter-spacing: 0.04em;
@@ -234,7 +234,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .preloader__caption {
   margin-top: 18px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.2em;
@@ -284,7 +284,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   background: linear-gradient(135deg, rgba(212,175,55,0.10), rgba(212,175,55,0.02));
   border: 1px solid var(--border-2);
   display: grid; place-items: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 700; font-size: 16px;
   color: var(--gold-2);
   letter-spacing: 0;
@@ -311,7 +311,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   transition: color 0.25s var(--ease), background 0.25s var(--ease);
 }
 .nav__link span {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   color: var(--muted-2);
   transition: color 0.25s var(--ease);
@@ -382,7 +382,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .nav__links.is-open { transform: translateX(0); }
   .nav__links .nav__link {
     font-size: 22px;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Instrument Serif', serif;
     font-weight: 500;
     width: 100%;
   }
@@ -433,7 +433,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .section__tag {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -450,7 +450,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-right: 1px solid var(--border-2);
 }
 .section__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: clamp(38px, 5.5vw, 72px);
   line-height: 1.05;
@@ -570,7 +570,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 
 .hero__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: clamp(68px, 10vw, 144px);
   line-height: 0.92;
@@ -616,7 +616,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .hero__meta-item { display: flex; flex-direction: column; gap: 2px; }
 .hero__meta-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -684,7 +684,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-radius: 999px;
   padding: 8px 14px;
   font-size: 11px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   letter-spacing: 0.1em;
   display: inline-flex; align-items: center; gap: 8px;
   color: var(--text-soft);
@@ -709,7 +709,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   color: var(--muted);
 }
 .hero__scroll-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -886,7 +886,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left center;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -898,7 +898,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -916,7 +916,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   display: inline-flex;
   align-items: baseline;
   gap: 0.04em;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 600;
   font-size: clamp(7rem, 18vw, 11rem);
   line-height: 0.92;
@@ -940,14 +940,14 @@ button, input, textarea, select { font: inherit; color: inherit; }
   margin-top: 14px;
 }
 .about__monogram-name {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: 1.05rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--text);
 }
 .about__monogram-role {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: 'Geist Mono', ui-monospace, monospace;
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -990,7 +990,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .about__media-caption {
   display: flex; justify-content: space-between;
   margin-top: 14px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--muted);
@@ -998,7 +998,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 
 .about__quote {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-weight: 400;
   font-size: clamp(22px, 2.2vw, 32px);
@@ -1031,7 +1031,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .about__stat:last-child { border-right: none; }
 .about__stat-num {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: clamp(32px, 3.4vw, 44px);
   line-height: 1;
@@ -1136,7 +1136,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   display: inline-flex;
   align-items: center;
   margin-bottom: 18px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -1144,7 +1144,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .snapshot__title,
 .snapshot__minor-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text);
@@ -1200,7 +1200,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-bottom: none;
 }
 .snapshot__list span {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1309,13 +1309,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-radius: 12px;
 }
 .skill-card__index {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   color: var(--muted);
 }
 .skill-card__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: 30px;
   letter-spacing: -0.01em;
@@ -1414,7 +1414,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   position: absolute;
   top: 20px; left: 20px;
   padding: 6px 12px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1429,7 +1429,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .project__body { padding: 28px; }
 .project__meta {
   display: flex; justify-content: space-between;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1439,7 +1439,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .project__meta > span:last-child { color: var(--gold); transition: transform 0.3s var(--ease); }
 .project:hover .project__meta > span:last-child { transform: translateX(4px); }
 .project__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: 28px;
   letter-spacing: -0.01em;
@@ -1455,7 +1455,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .project__tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .project__tags span {
   padding: 5px 10px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1468,7 +1468,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .work__footer { margin-top: 60px; text-align: center; }
 .link-arrow {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-style: italic;
   font-size: 22px;
   color: var(--text);
@@ -1525,13 +1525,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border: 1px solid var(--border-2);
   background: var(--gold-soft);
   color: var(--gold);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 .work__empty-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-size: clamp(32px, 4vw, 48px);
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -1591,7 +1591,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .location__fact-label {
   display: block;
   margin-bottom: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1612,7 +1612,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .location-globe-card__label,
 .location-globe-card__hint {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -1702,7 +1702,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   position: relative;
 }
 .contact__title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: clamp(42px, 5.5vw, 80px);
   line-height: 1.02;
@@ -1736,7 +1736,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-radius: 999px;
   border: 1px solid rgba(212,175,55,0.30);
   background: rgba(212,175,55,0.06);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1756,7 +1756,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   100% { box-shadow: 0 0 0 0   rgba(74,222,128,0); }
 }
 .contact__status-meta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1822,20 +1822,20 @@ button, input, textarea, select { font: inherit; color: inherit; }
   gap: 16px;
 }
 .contact__channel-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.22em;
   color: var(--gold);
 }
 .contact__channel-name {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
 }
 .contact__channel-value {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: clamp(22px, 2.4vw, 32px);
   letter-spacing: -0.01em;
@@ -1901,7 +1901,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   border-radius: 14px;
   border: 1px solid var(--border-2);
   background: linear-gradient(135deg, rgba(212,175,55,0.18), rgba(212,175,55,0.02));
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 600;
   font-size: 22px;
   letter-spacing: -0.02em;
@@ -1910,7 +1910,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 }
 .contact__signoff-body { min-width: 0; }
 .contact__signoff-name {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 500;
   font-size: 20px;
   letter-spacing: -0.01em;
@@ -1918,7 +1918,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   line-height: 1.2;
 }
 .contact__signoff-meta {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1970,7 +1970,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   width: 48px; height: 48px;
   border-radius: 12px;
   display: grid; place-items: center;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Instrument Serif', serif;
   font-weight: 700;
   font-size: 18px;
   background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.02));
@@ -2000,7 +2000,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .footer__right { text-align: right; }
 .footer__copy { font-size: 13px; color: var(--text-soft); }
 .footer__fine {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.16em;
   color: var(--muted);
@@ -2078,7 +2078,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   font-size: 13px; color: var(--text); font-weight: 500;
 }
 .globe__coords {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.12em;
   color: var(--muted);
@@ -2145,7 +2145,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   line-height: 1.2;
 }
 .globe__coords {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Geist Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.12em;
   color: var(--muted);
