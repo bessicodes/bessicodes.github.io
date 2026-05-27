@@ -159,18 +159,6 @@
     });
   }
 
-  if (!prefersReducedMotion) {
-    const orbs = $$('.bg-orb');
-    window.addEventListener('mousemove', (e) => {
-      const mx = e.clientX / window.innerWidth - 0.5;
-      const my = e.clientY / window.innerHeight - 0.5;
-      orbs.forEach((orb, i) => {
-        const movement = (i + 1) * 14;
-        orb.style.transform = `translate(${mx * movement}px, ${my * movement}px)`;
-      });
-    });
-  }
-
   let lenisInstance = null;
 
   const scrollToTarget = (target) => {
