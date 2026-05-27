@@ -89,20 +89,6 @@
     revealEls.forEach((el) => revealObs.observe(el));
   }
 
-  const levels = $$('.skill-card__level');
-  if ('IntersectionObserver' in window) {
-    const levelObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.style.setProperty('--lvl', `${entry.target.getAttribute('data-level') || '0'}%`);
-        levelObs.unobserve(entry.target);
-      });
-    }, { threshold: 0.4 });
-    levels.forEach((el) => levelObs.observe(el));
-  } else {
-    levels.forEach((el) => el.style.setProperty('--lvl', `${el.getAttribute('data-level') || '0'}%`));
-  }
-
   const counters = $$('.about__stat-num');
   const animateCount = (el) => {
     const target = parseInt(el.dataset.count || '0', 10);
@@ -351,7 +337,7 @@
       let ry = ty;
       let visible = false;
 
-      const hoverSelector = 'a, button, [role="button"], .magnetic, [data-tilt], input, textarea, label, .chip, .nav__burger, .skill-card, .snapshot__card, .award, .timeline__card';
+      const hoverSelector = 'a, button, [role="button"], .magnetic, [data-tilt], input, textarea, label, .chip, .nav__burger, .skill-card, .snapshot__card';
       let isHover = false;
 
       window.addEventListener('mousemove', (e) => {

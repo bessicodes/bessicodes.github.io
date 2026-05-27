@@ -1264,31 +1264,24 @@ button, input, textarea, select { font: inherit; color: inherit; }
   margin-bottom: 26px;
   line-height: 1.6;
 }
-.skill-card__list { list-style: none; display: grid; gap: 14px; }
+.skill-card__list { list-style: none; display: grid; gap: 12px; }
 .skill-card__list li {
-  display: grid;
-  grid-template-columns: 1fr 110px;
-  align-items: center;
-  gap: 16px;
-  font-size: 13px;
+  position: relative;
+  padding: 0 0 12px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border);
   color: var(--text-soft);
 }
-.skill-card__level {
-  height: 3px;
-  background: var(--surface-2);
-  border-radius: 4px;
-  position: relative;
-  overflow: hidden;
-}
-.skill-card__level::before {
+.skill-card__list li:last-child { border-bottom: none; padding-bottom: 0; }
+.skill-card__list li::before {
   content: '';
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: var(--lvl, 0%);
-  background: linear-gradient(90deg, var(--gold-3), var(--gold-2));
-  border-radius: 4px;
-  transition: width 1.4s var(--ease);
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(212,175,55,0.45);
 }
-
 @media (max-width: 720px) {
   .skills__grid { grid-template-columns: 1fr; }
   .skill-card { padding: 28px 24px; }
@@ -1297,11 +1290,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
 
 @media (max-width: 560px) {
   .skill-card { padding: 24px 20px; }
-  .skill-card__list li {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .skill-card__level { width: 100%; }
 }
 
 /* ─── Work ───────────────────────────────────────────── */
@@ -1620,87 +1608,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
     letter-spacing: 0.16em;
   }
 }
-.timeline {
-  position: relative;
-  list-style: none;
-  padding-left: 36px;
-}
-.timeline::before {
-  content: ''; position: absolute;
-  left: 9px; top: 6px; bottom: 6px;
-  width: 1px;
-  background: linear-gradient(180deg, var(--gold), transparent);
-}
-.timeline__item {
-  position: relative;
-  padding: 0 0 50px 36px;
-}
-.timeline__item:last-child { padding-bottom: 0; }
-.timeline__marker {
-  position: absolute;
-  left: -32px; top: 6px;
-  width: 16px; height: 16px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 2px solid var(--gold);
-  box-shadow: 0 0 0 4px var(--bg), 0 0 20px var(--gold-glow);
-}
-.timeline__year {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 10px;
-}
-.timeline__card {
-  padding: 24px 28px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
-}
-.timeline__card:hover {
-  border-color: var(--border-2);
-  transform: translateX(4px);
-}
-.timeline__role {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 10px;
-}
-.timeline__title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
-  color: var(--text);
-}
-.timeline__card p {
-  color: var(--text-soft);
-  font-size: 14px;
-}
-
-@media (max-width: 560px) {
-  .timeline { padding-left: 24px; }
-  .timeline::before { left: 6px; }
-  .timeline__item {
-    padding-left: 24px;
-    padding-bottom: 34px;
-  }
-  .timeline__marker {
-    left: -20px;
-    width: 14px;
-    height: 14px;
-  }
-  .timeline__card { padding: 20px; }
-  .timeline__title { font-size: 20px; }
-}
-
 
 /* ─── Contact ────────────────────────────────────────── */
 .contact { padding: 140px 0 160px; }
@@ -2289,6 +2196,23 @@ body.has-custom-cursor [data-tilt] { cursor: none; }
 .contact__title.is-split-in .char {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Re-apply the parent's gradient on each char inside an italic gold
+   span — background-clip: text on the parent does not propagate to
+   inline-block children, so without this the italic letters render
+   transparent on no background and disappear. */
+.section__title em .char {
+  background: linear-gradient(180deg, var(--gold-2) 30%, var(--gold-3));
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+.contact__title-italic .char {
+  background: linear-gradient(180deg, var(--gold-2), var(--gold-3));
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
 }
 
 /* ─── Marquee ────────────────────────────────────────── */
