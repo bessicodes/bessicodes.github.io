@@ -171,47 +171,6 @@
     });
   }
 
-  const form = $('#contactForm');
-  const note = $('#formNote');
-  if (form) {
-    $$('.field input, .field textarea', form).forEach((input) => {
-      const setFilled = () => {
-        input.closest('.field').classList.toggle('is-filled', input.value.trim() !== '');
-      };
-      input.addEventListener('input', setFilled);
-      input.addEventListener('change', setFilled);
-    });
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = $('#cf-name').value.trim();
-      const email = $('#cf-email').value.trim();
-      const message = $('#cf-message').value.trim();
-
-      if (!name || !email || !message) {
-        if (note) {
-          note.textContent = 'Please fill in name, email, and message.';
-          note.style.color = '#f59e0b';
-        }
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        if (note) {
-          note.textContent = 'That email does not look quite right.';
-          note.style.color = '#f59e0b';
-        }
-        return;
-      }
-
-      if (note) {
-        note.textContent = 'Message captured. Wire this form up later and it is ready to go.';
-        note.style.color = '';
-      }
-      form.reset();
-      $$('.field', form).forEach((field) => field.classList.remove('is-filled'));
-    });
-  }
-
   let lenisInstance = null;
 
   const scrollToTarget = (target) => {
@@ -284,38 +243,12 @@
           touchMultiplier: 1.2,
         });
 
-        // Single rAF loop drives Lenis + velocity-based skew + marquee.
-        const marqueeTrack = $('#marqueeTrack');
-        let marqueeBase = 0;
-        let marqueeHalfWidth = 0;
-        const MARQUEE_SPEED = 28; // px/s baseline
-        let lastFrame = performance.now();
-
-        const measureMarquee = () => {
-          if (marqueeTrack) marqueeHalfWidth = marqueeTrack.scrollWidth / 2;
-        };
-        measureMarquee();
-        window.addEventListener('resize', measureMarquee, { passive: true });
-
+        // Single rAF loop drives Lenis + velocity-based skew.
         const tick = (time) => {
           lenisInstance.raf(time);
-          const dt = Math.min(0.05, (time - lastFrame) / 1000);
-          lastFrame = time;
           const v = lenisInstance.velocity || 0;
-
-          // Velocity skew: clamp to keep it subtle
           const sk = Math.max(-1.2, Math.min(1.2, v * 0.018));
           document.documentElement.style.setProperty('--scroll-skew', `${sk.toFixed(3)}deg`);
-
-          // Marquee: constant drift plus a velocity contribution
-          if (marqueeTrack && marqueeHalfWidth > 0) {
-            const velBoost = Math.abs(v) * 0.55;
-            marqueeBase -= (MARQUEE_SPEED + velBoost) * dt;
-            // Wrap when we have scrolled past one full duplicate set
-            while (marqueeBase <= -marqueeHalfWidth) marqueeBase += marqueeHalfWidth;
-            marqueeTrack.style.transform = `translate3d(${marqueeBase.toFixed(2)}px, 0, 0)`;
-          }
-
           requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);

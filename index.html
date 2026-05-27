@@ -388,32 +388,6 @@
       </div>
     </section>
 
-    <section class="marquee" aria-hidden="true">
-      <div class="marquee__track" id="marqueeTrack">
-        <span class="marquee__item">Available for work</span>
-        <span class="marquee__dot"></span>
-        <span class="marquee__item marquee__item--italic">Randburg, ZA</span>
-        <span class="marquee__dot"></span>
-        <span class="marquee__item">Web &middot; UX &middot; Brand</span>
-        <span class="marquee__dot"></span>
-        <span class="marquee__item marquee__item--italic">Open to junior roles</span>
-        <span class="marquee__dot"></span>
-        <span class="marquee__item">Crafted in South Africa</span>
-        <span class="marquee__dot"></span>
-
-        <span class="marquee__item" aria-hidden="true">Available for work</span>
-        <span class="marquee__dot" aria-hidden="true"></span>
-        <span class="marquee__item marquee__item--italic" aria-hidden="true">Randburg, ZA</span>
-        <span class="marquee__dot" aria-hidden="true"></span>
-        <span class="marquee__item" aria-hidden="true">Web &middot; UX &middot; Brand</span>
-        <span class="marquee__dot" aria-hidden="true"></span>
-        <span class="marquee__item marquee__item--italic" aria-hidden="true">Open to junior roles</span>
-        <span class="marquee__dot" aria-hidden="true"></span>
-        <span class="marquee__item" aria-hidden="true">Crafted in South Africa</span>
-        <span class="marquee__dot" aria-hidden="true"></span>
-      </div>
-    </section>
-
     <section class="section location" id="location">
       <div class="container">
         <div class="location__panel">
@@ -465,63 +439,67 @@
           <div class="contact__head reveal">
             <div class="section__tag"><span>05</span>Contact</div>
             <h2 class="contact__title">
-              <span>Let's talk about</span>
-              <span class="contact__title-italic">what you want to build.</span>
+              <span>Have a project</span>
+              <span class="contact__title-italic">worth building?</span>
             </h2>
-            <p class="contact__sub">Email is best for proper briefs. WhatsApp is perfect for quick messages, check-ins, and follow-ups.</p>
+            <p class="contact__sub">Reach out directly. Email is best for briefs and longer notes; WhatsApp is faster for quick questions and check-ins.</p>
           </div>
 
-          <div class="contact__grid">
-            <form class="contact__form reveal" id="contactForm" novalidate>
-              <div class="field">
-                <input type="text" id="cf-name" placeholder=" " required autocomplete="name" />
-                <label for="cf-name">Your name</label>
-                <div class="field__line"></div>
-              </div>
-              <div class="field">
-                <input type="email" id="cf-email" placeholder=" " required autocomplete="email" />
-                <label for="cf-email">Email address</label>
-                <div class="field__line"></div>
-              </div>
-              <div class="field">
-                <input type="text" id="cf-subject" placeholder=" " />
-                <label for="cf-subject">Project or subject</label>
-                <div class="field__line"></div>
-              </div>
-              <div class="field field--area">
-                <textarea id="cf-message" rows="5" placeholder=" " required></textarea>
-                <label for="cf-message">Tell me about it...</label>
-                <div class="field__line"></div>
-              </div>
+          <div class="contact__status reveal" role="status">
+            <span class="contact__status-pill">
+              <span class="contact__status-dot" aria-hidden="true"></span>
+              <span>Available for work</span>
+            </span>
+            <span class="contact__status-meta"><span>Replies within 24 hours</span></span>
+            <span class="contact__status-meta"><span>GMT+2 &middot; Johannesburg</span></span>
+          </div>
 
-              <button type="submit" class="btn btn--primary btn--full magnetic">
-                <span class="btn__label">Send message</span>
-                <span class="btn__icon">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          <div class="contact__channels">
+            <a href="mailto:ruanbester6@icloud.com" class="contact__channel reveal magnetic">
+              <div class="contact__channel-head">
+                <span class="contact__channel-num">01</span>
+                <span class="contact__channel-name">Email</span>
+              </div>
+              <div class="contact__channel-value">ruanbester6@icloud.com</div>
+              <div class="contact__channel-foot">
+                <span class="contact__channel-hint">Best for briefs, longer notes, attachments</span>
+                <span class="contact__channel-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M5 19 19 5M9 5h10v10"/>
+                  </svg>
                 </span>
-              </button>
+              </div>
+            </a>
 
-              <div class="contact__form-note" id="formNote" aria-live="polite"></div>
-            </form>
+            <a href="https://wa.me/27722996492" class="contact__channel reveal magnetic">
+              <div class="contact__channel-head">
+                <span class="contact__channel-num">02</span>
+                <span class="contact__channel-name">WhatsApp</span>
+              </div>
+              <div class="contact__channel-value">072 299 6492</div>
+              <div class="contact__channel-foot">
+                <span class="contact__channel-hint">Best for quick questions and check-ins</span>
+                <span class="contact__channel-arrow" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6">
+                    <path d="M5 19 19 5M9 5h10v10"/>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          </div>
 
-            <aside class="contact__aside reveal">
-              <div class="contact__card">
-                <div class="contact__card-label">Email</div>
-                <a href="mailto:ruanbester6@icloud.com" class="contact__card-value">ruanbester6@icloud.com</a>
-              </div>
-              <div class="contact__card">
-                <div class="contact__card-label">WhatsApp</div>
-                <a href="https://wa.me/27722996492" class="contact__card-value">072 299 6492</a>
-              </div>
-              <div class="contact__card contact__card--accent">
-                <div class="contact__card-label">Best way to reach me</div>
-                <div class="contact__card-value contact__card-value--stack">Email for detailed briefs. WhatsApp for fast conversations and quick follow-ups.</div>
-              </div>
-              <div class="contact__quick-actions">
-                <a href="mailto:ruanbester6@icloud.com" class="btn btn--primary btn--full">Email me</a>
-                <a href="https://wa.me/27722996492" class="btn btn--ghost btn--full">Message on WhatsApp</a>
-              </div>
-            </aside>
+          <div class="contact__signoff reveal">
+            <div class="contact__signoff-mark" aria-hidden="true">RB</div>
+            <div class="contact__signoff-body">
+              <div class="contact__signoff-name">Ruan Bester</div>
+              <div class="contact__signoff-meta">Creative developer &amp; designer &mdash; Randburg, ZA</div>
+            </div>
+            <a href="mailto:ruanbester6@icloud.com" class="btn btn--primary contact__signoff-cta magnetic">
+              <span class="btn__label">Start a conversation</span>
+              <span class="btn__icon">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </span>
+            </a>
           </div>
         </div>
       </div>
